@@ -4,11 +4,12 @@ void setup()
 	size(1000, 1000);
 	background(0);
 	noLoop();
-	first = new Die(0,0);
 }
 void draw()
 {
+	first = new Die(0,0);
 	first.show();
+	first.roll();
 }
 void mousePressed()
 {
@@ -17,42 +18,29 @@ void mousePressed()
 class Die //models one single dice cube
 {
 	int myX, myY;
-	
+	int val;
 	Die(int x, int y) //constructor
 	{
 		myX=x;
 		myY=y;
-		//System.out.println(myVal);
+		val = (int)(Math.random()*6)+1;
 	}
 	void roll()
 	{
-		//your code here
+		System.out.println(val);
+		for(int b=0; b<25; b++){
+		for (int a =0; a<25; a++){
+		if (val==1){
+		ellipse(40*a+20, 20, 5, 5);
+			}		
+		}
+		}
 	}
 	void show()
 	{
 		for(int i=0; i<25; i++){
 			for(int j=0; j<25; j++){
 				rect(myX+40*j, myY, 40, 40,10);
-				if((int)(Math.random()*6)+1==1){
-					ellipse(myX+40*j+20, myY+20, 5, 5);
-					if ((int)(Math.random()*6)+1==3){
-						ellipse(myX+40*j+10, myY+10, 5, 5);
-						ellipse(myX+40*j+30, myY+30, 5, 5);
-					}
-				}else if((int)(Math.random()*6)+1==2){
-					ellipse(myX+40*j+10, myY+10, 5, 5);
-					ellipse(myX+40*j+30, myY+30, 5, 5);
-					if ((int)(Math.random()*6)+1==4){
-						ellipse(myX+40*j+30, myY+10, 5, 5);
-						ellipse(myX+40*j+10, myY+30, 5, 5);
-					}
-				}else if ((int)(Math.random()*6)+1==5){
-						ellipse(myX+40*j+30, myY+10, 5, 5);
-						ellipse(myX+40*j+10, myY+30, 5, 5);
-						ellipse(myX+40*j+10, myY+10, 5, 5);
-						ellipse(myX+40*j+30, myY+30, 5, 5);
-						ellipse(myX+40*j+20, myY+20, 5, 5);
-				}
 			}myY+=40;
 		}
 	}
